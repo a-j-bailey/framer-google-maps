@@ -10,11 +10,11 @@ export default function MapComponent(props) {
     return <div style={style}>{props.text}</div>
 }
 
-Button.defaultProps = {
+MapComponent.defaultProps = {
     text: "My Title",
 }
 
-addPropertyControls(Button, {
+addPropertyControls(MapComponent, {
     text: {
         title: "Text",
         type: ControlType.String,
