@@ -1,0 +1,8 @@
+{
+  "id": "0aaba3",
+  "name": "Google Maps",
+  "modes": [
+    "canvas"
+  ],
+  "icon": "/icon.svg"
+}
