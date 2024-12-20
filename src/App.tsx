@@ -39,6 +39,11 @@ export function App() {
         return <Draggable data={{
             type: 'componentInstance',
             url: 'https://framer.com/m/Google-Maps-NnO8.js',
+            attributes: {
+                controls: {
+                    mapStyle: style.title.toLowerCase()
+                }
+            }
         }}>
             <div style={{
                 minWidth: 100,
