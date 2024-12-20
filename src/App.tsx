@@ -48,19 +48,20 @@ export function App() {
             <div style={{
                 minWidth: 100,
                 minHeight: 100,
-                borderRadius: 8,
+                borderRadius: '8px',
                 backgroundColor: '#212121',
                 display: "block",
                 backgroundImage: `url(${style.thumbnailUrl})`,
                 position: "relative",
                 overflow: 'hidden',
+                cursor: 'grab',
             }}>
                 <p style={{
                     position: "absolute",
                     bottom: 0,
                     padding: 4,
                     backgroundColor: '#212121',
-                    width: '100%'
+                    width: '100%',
                 }}>{style.title}</p>
             </div>
         </Draggable>
@@ -69,7 +70,8 @@ export function App() {
     return (
         <main>
             <p>
-                Welcome to the (Unofficial) Google Maps Plugin!
+                Welcome to the Google Maps Plugin!<br />
+                Choose a default map style to begin.
             </p>
             <hr />
             <div style={{ display: "flex", flexDirection: "row", flexWrap: 'wrap', gap: 8 }}>
