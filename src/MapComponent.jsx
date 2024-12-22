@@ -1,6 +1,17 @@
-// This is a backup of the map component that lives on Framer, here:
-// https://framer.com/m/Google-Maps-NnO8.js
-import { APIProvider, Map } from "@vis.gl/react-google-maps"
+/**
+ * This is a backup of the map component that lives on Framer, here:
+ * https://framer.com/m/Google-Maps-NnO8.js
+ * 
+ * @author: Adam Bailey (adam@magicmirrorcreative.com)
+ */
+
+import {
+    APIProvider,
+    Map,
+    Marker,
+    AdvancedMarker,
+    Pin,
+} from "@vis.gl/react-google-maps"
 import { addPropertyControls, ControlType } from "framer"
 
 const styles = {
