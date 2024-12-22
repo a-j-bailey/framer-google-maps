@@ -1,10 +1,3 @@
-/**
- * This is a backup of the map component that lives on Framer, here:
- * https://framer.com/m/Google-Maps-NnO8.js
- * 
- * @author: Adam Bailey (adam@magicmirrorcreative.com)
- */
-
 import {
     APIProvider,
     Map,
@@ -978,7 +971,7 @@ const styles = {
  *
  * @author Adam Bailey
  * @website adambailey.framer.website
- * 
+ *
  * @framerDisableUnlink
  * @framerSupportedLayoutWidth any-prefer-fixed
  * @framerSupportedLayoutHeight any-prefer-fixed
@@ -1085,6 +1078,8 @@ addPropertyControls(Google_Maps, {
     api_key: {
         type: ControlType.String,
         title: "API Key",
+        description:
+            "[Get an API Key](https://developers.google.com/maps/documentation/javascript/get-api-key)",
     },
     map_id: {
         type: ControlType.String,
