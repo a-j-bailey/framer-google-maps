@@ -986,13 +986,33 @@ export default function Google_Maps(props) {
                         defaultZoom={props.defaultZoom}
                         zoom={props.defaultZoom}
                         defaultCenter={{
-                            lat: props.defaultCenter.latitude,
-                            lng: props.defaultCenter.longitude,
+                            lat: props.defaultCenter.lat,
+                            lng: props.defaultCenter.lng,
+                        }}
+                        center={{
+                            lat: props.defaultCenter.lat,
+                            lng: props.defaultCenter.lng,
                         }}
                         gestureHandling={"greedy"}
                         disableDefaultUI={props.disableUI}
                         styles={styles[props.mapStyle]}
-                    />
+                    >
+                        {props.markers.map((marker) => {
+                            return (
+                                <Marker
+                                    clickable={true}
+                                    position={{
+                                        lat: marker.position.lat,
+                                        lng: marker.position.lng,
+                                    }}
+                                    onClick={() => {
+                                        window.open(marker.link)
+                                    }}
+                                    title={marker.markerTitle}
+                                />
+                            )
+                        })}
+                    </Map>
                 </APIProvider>
             )}
         </div>
@@ -1010,30 +1030,38 @@ Google_Maps.defaultProps = {
     mapStyle: "standard",
 }
 
+const latLongControl = {
+    lat: {
+        type: ControlType.Number,
+        title: "Lat",
+        min: -90,
+        max: 90,
+        step: 0.0001,
+    },
+    lng: {
+        type: ControlType.Number,
+        title: "Long",
+        min: -180,
+        max: 180,
+        step: 0.0001,
+    },
+}
+
 addPropertyControls(Google_Maps, {
     api_key: {
         type: ControlType.String,
         title: "API Key",
     },
+    map_id: {
+        type: ControlType.String,
+        title: "Map ID",
+        description:
+            "Map ID is required to use Cloud Styling or Advanced Markers. [Read More](https://developers.google.com/maps/documentation/javascript)",
+    },
     defaultCenter: {
         type: ControlType.Object,
         title: "Center",
-        controls: {
-            latitude: {
-                type: ControlType.Number,
-                title: "Latitude",
-                min: -90,
-                max: 90,
-                step: 0.0001,
-            },
-            longitude: {
-                type: ControlType.Number,
-                title: "Longitude",
-                min: -180,
-                max: 180,
-                step: 0.0001,
-            },
-        },
+        controls: latLongControl,
     },
     defaultZoom: {
         type: ControlType.Number,
@@ -1046,7 +1074,7 @@ addPropertyControls(Google_Maps, {
     mapStyle: {
         type: ControlType.Enum,
         title: "Map Style",
-        defaultValue: "a",
+        defaultValue: "standard",
         displaySegmentedControl: false,
         options: Object.keys(styles),
         optionTitles: Object.keys(styles),
@@ -1059,14 +1087,21 @@ addPropertyControls(Google_Maps, {
             type: ControlType.Object,
             controls: {
                 markerType: {
-                    title: "Advanced Marker",
+                    title: "Advanced",
                     type: ControlType.Boolean,
+                    defaultValue: false,
+                    description: "A Map ID is required for Advanced Markers",
                 },
                 markerTitle: {
                     type: ControlType.String,
                     title: "Title",
                 },
-                markerLink: {
+                position: {
+                    type: ControlType.Object,
+                    title: "Position",
+                    controls: latLongControl,
+                },
+                link: {
                     type: ControlType.Link,
                     title: "On Click",
                 },
