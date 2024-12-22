@@ -974,9 +974,12 @@ const styles = {
 }
 
 /**
- * These annotations control how your component sizes
- * Learn more: https://www.framer.com/developers/components/auto-sizing
+ * This is a Framer Component implementation of the https://visgl.github.io library.
  *
+ * @author Adam Bailey
+ * @website adambailey.framer.website
+ * 
+ * @framerDisableUnlink
  * @framerSupportedLayoutWidth any-prefer-fixed
  * @framerSupportedLayoutHeight any-prefer-fixed
  */
