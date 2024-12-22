@@ -31,7 +31,7 @@ const mapStyles = [
 framer.showUI({
     position: "top right",
     width: 360,
-    height: 300,
+    height: 345,
 })
 
 export function App() {
@@ -62,6 +62,7 @@ export function App() {
                     padding: 4,
                     backgroundColor: '#212121',
                     width: '100%',
+                    fontWeight: 'bold',
                 }}>{style.title}</p>
             </div>
         </Draggable>
@@ -70,15 +71,18 @@ export function App() {
     return (
         <main>
             <p>
-                Welcome to the Google Maps Plugin!<br />
-                Choose a default map style to begin.
+                Welcome to the Simple Maps Plugin! <br />
+                Choose a default map style to begin:
             </p>
-            <hr />
             <div style={{ display: "flex", flexDirection: "row", flexWrap: 'wrap', gap: 8 }}>
                 {mapStyles.map((style) => {
                     return <DraggableThumbnail style={style} />
                 })}
             </div>
+            <hr/>
+            <p>
+                More information and support for plugin can be found <a href="https://github.com/a-j-bailey/framer-google-maps" target="_blank">here</a>.
+            </p>
         </main>
     )
 }
