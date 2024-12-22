@@ -38,7 +38,7 @@ export function App() {
     function DraggableThumbnail({ style }: { style: any }) {
         return <Draggable data={{
             type: 'componentInstance',
-            url: 'https://framer.com/m/Google-Maps-NnO8.js@EZqF6KF5YlINVnj7qjlP',
+            url: 'https://framer.com/m/Google-Maps-NnO8.js@OHCy443GYQtbIR7Lw2EU',
             attributes: {
                 controls: {
                     mapStyle: style.title.toLowerCase()
