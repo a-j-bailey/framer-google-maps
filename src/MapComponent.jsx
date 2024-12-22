@@ -1022,10 +1022,16 @@ addPropertyControls(Google_Maps, {
             latitude: {
                 type: ControlType.Number,
                 title: "Latitude",
+                min: -90,
+                max: 90,
+                step: 0.0001,
             },
             longitude: {
                 type: ControlType.Number,
                 title: "Longitude",
+                min: -180,
+                max: 180,
+                step: 0.0001,
             },
         },
     },
@@ -1044,5 +1050,27 @@ addPropertyControls(Google_Maps, {
         displaySegmentedControl: false,
         options: Object.keys(styles),
         optionTitles: Object.keys(styles),
+    },
+    markers: {
+        title: "Markers",
+        type: ControlType.Array,
+        control: {
+            title: "Marker",
+            type: ControlType.Object,
+            controls: {
+                markerType: {
+                    title: "Advanced Marker",
+                    type: ControlType.Boolean,
+                },
+                markerTitle: {
+                    type: ControlType.String,
+                    title: "Title",
+                },
+                markerLink: {
+                    type: ControlType.Link,
+                    title: "On Click",
+                },
+            },
+        },
     },
 })
