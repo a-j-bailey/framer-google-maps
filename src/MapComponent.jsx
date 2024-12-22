@@ -1007,38 +1007,56 @@ export default function Google_Maps(props) {
                         gestureHandling={"greedy"}
                         disableDefaultUI={props.disableUI}
                         styles={styles[props.mapStyle]}
+                        mapId={props.map_id}
                     >
                         {props.markers.map((marker) => {
-                            return (
-                                <Marker
-                                    clickable={true}
-                                    position={{
-                                        lat: marker.position.lat,
-                                        lng: marker.position.lng,
-                                    }}
-                                    onClick={() => {
-                                        window.open(marker.link)
-                                    }}
-                                    title={marker.markerTitle}
-                                />
-                            )
+                            if (marker.advanced) {
+                                return (
+                                    <AdvancedMarker
+                                        clickable={true}
+                                        position={{
+                                            lat: marker.position.lat,
+                                            lng: marker.position.lng,
+                                        }}
+                                        onClick={() => {
+                                            window.open(marker.link)
+                                        }}
+                                        title={marker.markerTitle}
+                                    >
+                                        <Pin
+                                            background={marker.backgroundColor}
+                                            borderColor={marker.borderColor}
+                                            glyph={
+                                                marker.glyph
+                                                    ? marker.glyph
+                                                    : undefined
+                                            }
+                                            glyphColor={marker.glyphColor}
+                                            scale={marker.scale}
+                                        />
+                                    </AdvancedMarker>
+                                )
+                            } else {
+                                return (
+                                    <Marker
+                                        clickable={true}
+                                        position={{
+                                            lat: marker.position.lat,
+                                            lng: marker.position.lng,
+                                        }}
+                                        onClick={() => {
+                                            window.open(marker.link)
+                                        }}
+                                        title={marker.markerTitle}
+                                    />
+                                )
+                            }
                         })}
                     </Map>
                 </APIProvider>
             )}
         </div>
     )
-}
-
-Google_Maps.defaultProps = {
-    api_key: "",
-    defaultCenter: {
-        latitude: 0,
-        longitude: 0,
-    },
-    defaultZoom: 3,
-    disableUI: true,
-    mapStyle: "standard",
 }
 
 const latLongControl = {
@@ -1048,6 +1066,7 @@ const latLongControl = {
         min: -90,
         max: 90,
         step: 0.0001,
+        default: 0,
     },
     lng: {
         type: ControlType.Number,
@@ -1055,6 +1074,7 @@ const latLongControl = {
         min: -180,
         max: 180,
         step: 0.0001,
+        default: 0,
     },
 }
 
@@ -1077,10 +1097,12 @@ addPropertyControls(Google_Maps, {
     defaultZoom: {
         type: ControlType.Number,
         title: "Zoom",
+        defaultValue: 3,
     },
     disableUI: {
         type: ControlType.Boolean,
         title: "Disable UI",
+        defaultValue: true,
     },
     mapStyle: {
         type: ControlType.Enum,
@@ -1097,7 +1119,7 @@ addPropertyControls(Google_Maps, {
             title: "Marker",
             type: ControlType.Object,
             controls: {
-                markerType: {
+                advanced: {
                     title: "Advanced",
                     type: ControlType.Boolean,
                     defaultValue: false,
@@ -1115,6 +1137,44 @@ addPropertyControls(Google_Maps, {
                 link: {
                     type: ControlType.Link,
                     title: "On Click",
+                },
+                // ADVANCED Props:
+                backgroundColor: {
+                    type: ControlType.Color,
+                    title: "Background",
+                    hidden(props) {
+                        return !props.advanced
+                    },
+                },
+                borderColor: {
+                    type: ControlType.Color,
+                    title: "Border",
+                    hidden(props) {
+                        return !props.advanced
+                    },
+                },
+                glyph: {
+                    type: ControlType.String,
+                    title: "Glyph",
+                    hidden(props) {
+                        return !props.advanced
+                    },
+                },
+                glyphColor: {
+                    type: ControlType.Color,
+                    title: "Glyph Color",
+                    hidden(props) {
+                        return !props.advanced
+                    },
+                },
+                scale: {
+                    type: ControlType.Number,
+                    title: "Scale",
+                    defaultValue: 1,
+                    step: 0.01,
+                    hidden(props) {
+                        return !props.advanced
+                    },
                 },
             },
         },
