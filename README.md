@@ -1,10 +1,10 @@
 # Framer Google Maps
+[Website](https://googlemaps.framer.website/)
 
 This plugin allows you to easily integrate Google Maps into your Framer projects, providing a customizable and interactive map component.
 
-Additionally, a self-contained Map Component can be found [here](https://framer.com/m/Google-Maps-NnO8.js@OHCy443GYQtbIR7Lw2EU) for inserting into your project instead of using the plugin.
-
-Visit the Website: https://googlemaps.framer.website/
+Additionally, a self-contained Map Component can be found here:
+`https://framer.com/m/Google-Maps-NnO8.js` for inserting into your project instead of using the plugin. (Simply copy & paste the URL into your Framer Workspace)
 
 ## Features
 
@@ -15,8 +15,8 @@ Visit the Website: https://googlemaps.framer.website/
 
 ## Set Up
 
-1. Add the Plugin to your Framer project.
-2. Get a Google API Key
+1. Paste this URL into your Framer workspace: `https://framer.com/m/Google-Maps-NnO8.js`
+2. Get a [Google API Key](https://developers.google.com/maps/documentation/javascript/get-api-key)
 
 ## Parameters
 
