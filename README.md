@@ -17,6 +17,7 @@ Additionally, a self-contained Map Component can be found here:
 
 1. Paste this URL into your Framer workspace: `https://framer.com/m/Google-Maps-NnO8.js`
 2. Get a [Google API Key](https://developers.google.com/maps/documentation/javascript/get-api-key)
+3. Paste the API key into Framer
 
 ## Parameters
 
